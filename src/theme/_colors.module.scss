@@ -1,5 +1,38 @@
-$red: #ff0000;
+$black: #000;
+$white: #FFF;
+$yellow: #FFD734;
+$purple: #3B11A3;
+
+$background--light: $white;
+$primary--light: $black;
+$secondary--light: $purple;
+$tertiary--light: $yellow;
+
+$background--dark: $white;
+$primary--dark: $black;
+$secondary--dark: $yellow;
+$tertiary--dark: $purple;
+
+$background: $background--dark;
+$primary: $primary--dark;
+$secondary: $secondary--dark;
+$tertiary: $tertiary--dark;
+
+
 
 :export {
-  myRed: $red;
+  background: $background--dark;
+  primary: $primary--dark;
+  secondary: $secondary--dark;
+  tertiary: $tertiary--dark;
+
+  background--light: $white;
+  primary--light: $black;
+  secondary--light: $purple;
+  tertiary--light: $yellow;
+
+  background--dark: $white;
+  primary--dark: $black;
+  secondary--dark: $yellow;
+  tertiary--dark: $purple;
 }
