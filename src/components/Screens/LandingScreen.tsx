@@ -1,6 +1,6 @@
 import React from 'react'
 import './LandingScreen.module.scss'
-import colors from '../../theme/colors.module.scss';
+import colors from '../../theme/_colors.module.scss';
 
 const LandingScreen: React.FC = () => {
     return (
