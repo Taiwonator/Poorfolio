@@ -2,6 +2,15 @@
     max-width: $mq--desktop;
     padding: 0 $gutter--mobile;
     margin: 0 auto;
+    transition: transform .2s ease-in-out;
+
+    &--nav-open {
+        transform: translateX(-100vw);
+        @include forTablet {
+            transition: transform .3s ease-in-out;
+            transform: translateX($sidenav-width * -1);
+        } 
+    }
 
     @include forTablet {
         padding: 0 $gutter--tablet;
