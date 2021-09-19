@@ -1,5 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
+import Navbar from 'src/components/Composition/Navbar'
+import PageWrapper from 'src/components/Wrappers/PageWrapper'
 import LandingScreen from '../src/components/Screens/LandingScreen'
 
 const Home: NextPage = () => {
@@ -10,7 +12,11 @@ const Home: NextPage = () => {
         <title>Michael Taiwo</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      <LandingScreen />
+      
+      <Navbar />
+      <PageWrapper>
+        <LandingScreen />
+      </PageWrapper>
     </div>
   )
 }

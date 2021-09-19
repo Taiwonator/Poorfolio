@@ -1,0 +1,9 @@
+.page-wrapper {
+    max-width: $mq--desktop;
+    padding: 0 $gutter--mobile;
+    margin: 0 auto;
+
+    @include forTablet {
+        padding: 0 $gutter--tablet;
+    }
+}
