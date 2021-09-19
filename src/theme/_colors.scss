@@ -1,0 +1,36 @@
+$color-black: #000;
+$color-white: #fff;
+$color-yellow: #ffd734;
+$color-purple: #3b11a3;
+
+$color-background--light: $color-white;
+$color-primary--light: $color-black;
+$color-secondary--light: $color-purple;
+$color-tertiary--light: $color-yellow;
+
+$color-background--dark: $color-black;
+$color-primary--dark: $color-white;
+$color-secondary--dark: $color-yellow;
+$color-tertiary--dark: $color-purple;
+
+$color-background: $color-background--dark;
+$color-primary: $color-primary--dark;
+$color-secondary: $color-secondary--dark;
+$color-tertiary: $color-tertiary--dark;
+
+:export {
+  background: $color-background--dark;
+  primary: $color-primary--dark;
+  secondary: $color-secondary--dark;
+  tertiary: $color-tertiary--dark;
+
+  background--light: $color-white;
+  primary--light: $color-black;
+  secondary--light: $color-purple;
+  tertiary--light: $color-yellow;
+
+  background--dark: $color-white;
+  primary--dark: $color-black;
+  secondary--dark: $color-yellow;
+  tertiary--dark: $color-purple;
+}

@@ -1,0 +1,36 @@
+.nav {
+    position: fixed;
+    width: 100vw;
+    height: 75px;
+}
+
+.nav__inner {
+    padding: 0 $gutter--mobile;
+    max-width: $mq--desktop;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    padding-top: 2em;
+
+    @include forTablet {
+        padding-left: $gutter--tablet;
+        padding-right: $gutter--tablet;
+    }
+}
+
+.nav__header {
+    &::after {
+        @include dot;
+        background: $color-secondary;
+    }
+}
+
+.nav__item-list {
+
+}
+
+.nav__item {
+
+}

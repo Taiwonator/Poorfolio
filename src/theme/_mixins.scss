@@ -1,0 +1,21 @@
+@import "./breakpoints";
+
+@mixin forDesktop {
+    @media (min-width: $mq--desktop) { 
+        @content; 
+    }
+}
+
+@mixin forTablet {
+    @media (min-width: $mq--tablet) { 
+        @content; 
+    }
+}
+
+@mixin dot {
+    content: '';
+    display: inline-block;
+    height: .2em;
+    width: .2em;
+    margin-left: .1em;
+}
