@@ -1,15 +1,19 @@
 import React from 'react'
 import styles from './PageWrapper.module.scss'
-
-interface PageWrapper {
-    children: React.ReactNode
+import classNames from 'classnames'
+interface PageWrapperProps {
+    children: React.ReactNode, 
+    navOpen: boolean
 }
  
-const PageWrapper: React.FC = props => {
-const { children } = props
+const PageWrapper: React.FC<PageWrapperProps> = ({ children, navOpen }) => {
+const className = classNames(
+    styles['page-wrapper'],
+    (navOpen && styles['page-wrapper--nav-open'])
+)
 
     return (
-        <div className={styles['page-wrapper']}>
+        <div className={className}>
             {children}
         </div>
     )

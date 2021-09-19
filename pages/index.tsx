@@ -1,10 +1,23 @@
+import { useEffect, useState } from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Navbar from 'src/components/Composition/Navbar'
+import Nav from 'src/components/Composition/Nav'
 import PageWrapper from 'src/components/Wrappers/PageWrapper'
 import LandingScreen from '../src/components/Screens/LandingScreen'
+import ComingSoonScreen from 'src/components/Screens/ComingSoonScreen'
 
 const Home: NextPage = () => {
+
+  const [ navOpen, toggleNav ] = useState(false)
+
+  useEffect(() => {
+    console.log(navOpen)
+  }) 
+
+  const toggleNavAction = (e) => {
+    console.log(navOpen);
+    toggleNav(!navOpen)
+  }
 
   return (
     <div>
@@ -13,10 +26,12 @@ const Home: NextPage = () => {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       
-      <Navbar />
-      <PageWrapper>
-        <LandingScreen />
-      </PageWrapper>
+      <Nav navOpen={navOpen} toggleAction={toggleNavAction}/>
+
+          <PageWrapper navOpen={navOpen}>
+            <LandingScreen />
+            <ComingSoonScreen />
+          </PageWrapper>
     </div>
   )
 }
