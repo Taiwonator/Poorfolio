@@ -19,7 +19,9 @@
     "jsx": "preserve", 
     "baseUrl": ".",
     "paths": {
-      "@settings": ["src/theme/settings.scss"],
+      "@settings": [
+        "src/styles/settings.scss"
+      ],
     }
   },
   "include": [

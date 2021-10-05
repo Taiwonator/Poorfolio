@@ -1,4 +1,4 @@
-import '../src/theme/foundation.scss'
+import '../src/styles/foundation.scss'
 import type { AppProps } from 'next/app'
 
 function MyApp({ Component, pageProps }: AppProps) {

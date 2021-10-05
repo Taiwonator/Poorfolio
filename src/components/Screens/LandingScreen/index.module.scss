@@ -2,6 +2,10 @@
   background-color: $color-background;
   margin-top: 5em;
 
+  &--dark {
+    background-color: $color-background--dark;
+  }
+
   @include forTablet() {
     display: flex;
     flex-direction: row;
