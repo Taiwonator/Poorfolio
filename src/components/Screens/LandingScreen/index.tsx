@@ -7,7 +7,6 @@ import Arrow from '../../../assets/svg/arrow.svg'
 import LandingScreenHeader from './Header';
 
 const LandingScreen: React.FC = () => { 
-    console.log(SETTINGS);
     return (
             <FlexWrapper name='landing-screen' tag='section' minHeight='100vh' center screen>
                 <div className={styles['landing-screen']}>

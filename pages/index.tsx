@@ -10,12 +10,7 @@ const Home: NextPage = () => {
 
   const [ navOpen, toggleNav ] = useState(false)
 
-  useEffect(() => {
-    console.log(navOpen)
-  }) 
-
   const toggleNavAction = (e) => {
-    console.log(navOpen);
     toggleNav(!navOpen)
   }
 
