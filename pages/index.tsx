@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Nav from 'src/components/Composition/Nav'
+import Nav from 'src/components/Screens/Nav'
 import PageWrapper from 'src/components/Wrappers/PageWrapper'
 import LandingScreen from '../src/components/Screens/LandingScreen'
 import ComingSoonScreen from 'src/components/Screens/ComingSoonScreen'
@@ -10,12 +10,7 @@ const Home: NextPage = () => {
 
   const [ navOpen, toggleNav ] = useState(false)
 
-  useEffect(() => {
-    console.log(navOpen)
-  }) 
-
   const toggleNavAction = (e) => {
-    console.log(navOpen);
     toggleNav(!navOpen)
   }
 
