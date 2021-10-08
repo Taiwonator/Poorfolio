@@ -1,10 +1,12 @@
 /* BREAKPOINTS  */
 $mq--tablet: 600px;
-$mq--desktop: 1024px;
+$mq--desktop: 1224px;
 
 /* GUTTERS */
 $gutter--mobile: .6rem;
 $gutter--tablet: 1rem;
+
+$padding--mobile--width: $gutter--mobile * 3;
 
 $nav-height: 75px;
 $sidenav-width: 300px;
