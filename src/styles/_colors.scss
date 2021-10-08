@@ -5,18 +5,18 @@ $color-purple: #3b11a3;
 
 $color-background--light: $color-white;
 $color-primary--light: $color-black;
-$color-secondary--light: $color-purple;
-$color-tertiary--light: $color-yellow;
+$color-secondary--light: $color-yellow;
+$color-tertiary--light: $color-purple;
 
 $color-background--dark: $color-black;
 $color-primary--dark: $color-white;
 $color-secondary--dark: $color-yellow;
 $color-tertiary--dark: $color-purple;
 
-$color-background: $color-background--dark;
-$color-primary: $color-primary--dark;
-$color-secondary: $color-secondary--dark;
-$color-tertiary: $color-tertiary--dark;
+$color-background: $color-background--light;
+$color-primary: $color-primary--light;
+$color-secondary: $color-secondary--light;
+$color-tertiary: $color-tertiary--light;
 
 :export {
   background: $color-background--dark;

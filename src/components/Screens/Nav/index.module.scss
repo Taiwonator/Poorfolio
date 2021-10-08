@@ -1,19 +1,18 @@
 .nav {
     position: fixed;
-    width: 100vw;
-    height: $nav-height;
+    width: 100%;
+    min-height: $nav-height;
     z-index: 2;
+    font-family: $font-family-header;
 }
 
 .nav__inner {
-    padding: 0 ($gutter--mobile * 4);
+    padding: 1.5em ($gutter--mobile * 4);
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     margin: 0 auto;
-    padding-top: 2em;
-    padding-bottom: 2em;
     transition: transform .2s ease-in-out;
 
     &--nav-open {
@@ -29,9 +28,12 @@
 }
 
 .nav__header {
+    font-family: $font-family;
+    text-transform: capitalize;
+
     &::after {
         @include dot;
-        background: $color-secondary;
+        background: $color-tertiary;
     }
 }
 
@@ -71,7 +73,7 @@
 }
 
 .nav__item {
-    color: $color-background;
+    color: $color-primary;
     font-size: 4em;
     font-weight: 900;
     text-transform: uppercase;
@@ -105,12 +107,12 @@
     align-items: flex-end;
 
     & > * {
-        flex-basis: 3%;
+        flex-basis: 6%;
     }
     
     &__top {
         width: 25%;
-        background-color: $color-tertiary;
+        background-color: $color-secondary;
         transform-origin: left;
         transition: all .3s ease-in-out;
     }
@@ -123,7 +125,7 @@
 
     &__bottom {
         width: 55%;
-        background-color: $color-secondary;
+        background-color: $color-tertiary;
         transform-origin: left;
         transition: all .2s ease-in-out;
     }

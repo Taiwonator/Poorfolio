@@ -5,15 +5,20 @@ import { SETTINGS } from 'src/styles/settings'
 import FlexWrapper from '../../Wrappers/FlexWrapper';
 import Arrow from '../../../assets/svg/arrow.svg'
 import LandingScreenHeader from './Header';
+import Button from 'src/components/Primitives/Button/Button';
+import Phone from '../Phone';
 
 const LandingScreen: React.FC = () => { 
     return (
-            <FlexWrapper name='landing-screen' tag='section' minHeight='100vh' center screen>
+            <FlexWrapper name='landing-screen' tag='section' minHeight='100vh'>
                 <div className={styles['landing-screen']}>
-                    <LandingScreenHeader />
-                    <button className={styles['landing-screen__scroll']}>
-                        <Image src={Arrow} height='40px' alt='down arrow' />
-                    </button>
+                    <div className={styles['landing-screen__left']}>
+                        <LandingScreenHeader />
+                        <Button text='shout me 🎉' />
+                    </div>
+                    <div className={styles['landing-screen__right']}>
+                        <Phone />
+                    </div>
                 </div>
             </FlexWrapper>
             

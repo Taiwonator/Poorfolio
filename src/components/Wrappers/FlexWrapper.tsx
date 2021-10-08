@@ -8,16 +8,18 @@ interface FlexWrapperProps {
     tag?: keyof JSX.IntrinsicElements, 
     screen?: boolean,
     center?: boolean,
+    bottom?: boolean,
     minHeight?: string
 }
 
 const FlexWrapper: React.FC<FlexWrapperProps> = props => {
-    const { children, name, tag, screen, center, minHeight } = props
+    const { children, name, tag, screen, center, bottom, minHeight } = props
 
     let Tag = tag ? tag : 'div'
     let otherClassNames = classNames(
         screen && styles['flex-wrapper--screen'],
-        center && styles['flex-wrapper--center']
+        center && styles['flex-wrapper--center'],
+        bottom && styles['flex-wrapper--bottom']
     )
 
     const style = {

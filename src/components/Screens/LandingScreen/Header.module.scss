@@ -1,5 +1,11 @@
 .header {
-  text-align: center;
+  text-align: left;
+  margin-bottom: 1.5em;
+
+  * {
+    height: .8em;
+    margin: .1em 0;
+  }
   
   @include forTablet() {
     text-align: left;
@@ -9,16 +15,29 @@
 
 .header__top {
   color: $color-background;
-  text-shadow: -1px -1px 0 $color-primary, 1px -1px 0 $color-primary, -1px 1px 0 $color-primary, 1px 1px 0 $color-primary;
-  font-size: 2.75em;
+  text-shadow: -2px -2px 0 $color-primary, 2px -2px 0 $color-primary, -2px 2px 0 $color-primary, 2px 2px 0 $color-primary;
+  font-size: 5em;
+
+  @include forTablet() {
+    font-size: 6em;
+  }
+
+  &::before {
+    content: 'Dev';
+
+    @include forDesktop() {
+      content: 'Developer';
+    }
+}
 }
 
 .header__middle {
   font-size: 6em;
 
-  @include forDesktop() {
+  @include forTablet() {
     background-color: $color-background;
     z-index: 1;
+    font-size: 8em;
   }
 
   &::before {
@@ -31,16 +50,25 @@
 
   &::after {
     @include dot;
-    background-color: $color-tertiary;
+    background-color: $color-secondary;
   }
 }
 
 .header__bottom {
-  color: $color-background;
-  text-shadow: -1px -1px 0 $color-secondary, 1px -1px 0 $color-secondary, -1px 1px 0 $color-secondary, 1px 1px 0 $color-secondary;
-  font-size: 3em;
+  color: $color-tertiary;
+  font-size: 5em;
   transform: rotateX(180deg);
+
+  @include forTablet() {
+    font-size: 6em;
+  }
+
+  &::before {
+    content: 'Designer';
+  }
+  
 }
+
 .header__dot {
   color: $color-tertiary;
   display: none;

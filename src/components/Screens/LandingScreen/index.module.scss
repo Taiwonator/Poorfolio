@@ -1,16 +1,48 @@
 .landing-screen {
   background-color: $color-background;
-  margin-top: 5em;
+  padding: $padding--mobile--width;
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+
+  @include forTablet() {
+    align-items: center;
+    margin-top: 0;
+    flex-direction: row;
+    justify-content: space-between;
+  }
 
   &--dark {
     background-color: $color-background--dark;
   }
 
-  @include forTablet() {
+  &__left {
+    flex: 2;
+    z-index: 1;
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-top: 0;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+  }
+
+  &__right {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 0;
+    width: 100vw;
+    height: 100vh;
+
+    @include forTablet() {
+      flex: 1;
+      z-index: 1;
+      background-color: unset;
+      height: 80%;
+      width: unset;
+      position: unset;
+    }
   }
 }
 
