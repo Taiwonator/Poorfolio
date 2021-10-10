@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import { SETTINGS } from 'src/styles/settings'
 import useKeypress from 'src/hooks/useKeypress'
 import useAnimationFrame from 'src/hooks/useAnimationFrame'
+import useClick from 'src/hooks/useClick'
 import { Food, Snake, ISnake, ISnakePlatform, IBlock, ISnakeBlock, IPos } from './lib/snake'
 
 import styles from './Snake.module.scss'
@@ -84,15 +85,18 @@ export const SnakePlatform: React.FC<ISnakePlatform> = ({ pos, size, width, heig
         }
     }, [count, food, snake])
 
-    const leftTouchPadAction = _ => {
-        snake.turnSnake('left')
+    const leftTouchPadAction = () => {
+        snake.turnAntiClockwise()
         setSnake(snake)
     }
 
-    const rightTouchPadAction = _ => {
-        snake.turnSnake('right')
+    const rightTouchPadAction = () => {
+        snake.turnClockwise()
         setSnake(snake)
     }
+
+    useClick(() => leftTouchPadAction(), () => rightTouchPadAction())
+
     
     return (
         <svg xmlns="http://www.w3.org/2000/svg" x={pos.x} y={pos.y} width={width} height={height} fill='#000'>
