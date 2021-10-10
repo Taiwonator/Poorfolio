@@ -7,13 +7,17 @@
 }
 
 .nav__inner {
-    padding: 0em ($gutter--mobile * 4);
+    padding: 2.5em ($gutter--mobile * 4);
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     margin: 0 auto;
     transition: transform .2s ease-in-out;
+
+    @include forTablet { 
+        padding: 0 ($gutter--mobile * 4);
+    }
 
     &--nav-open {
         @include forTablet {
