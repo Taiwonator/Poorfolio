@@ -8,6 +8,7 @@ import ComingSoonScreen from 'src/components/Screens/ComingSoonScreen'
 import { useScreenElement } from 'src/hooks/useScreenElement'
 import { useResponsiveWidth } from 'src/hooks/useResponsiveWidth'
 import Phone from 'src/components/Screens/Phone'
+import FlexWrapper from 'src/components/Wrappers/FlexWrapper'
 
 const Home: NextPage = () => {
 
@@ -39,7 +40,7 @@ const Home: NextPage = () => {
         <LandingScreen ref={ref}/>
         <ComingSoonScreen />
       </PageWrapper>
-      
+
       { PhoneComp }
 
     </React.Fragment>

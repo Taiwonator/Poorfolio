@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import { SETTINGS } from 'src/styles/settings'
 import useKeypress from 'src/hooks/useKeypress'
 import useAnimationFrame from 'src/hooks/useAnimationFrame'
+import useClick from 'src/hooks/useClick'
 import { Food, Snake, ISnake, ISnakePlatform, IBlock, ISnakeBlock, IPos } from './lib/snake'
 
 import styles from './Snake.module.scss'
@@ -62,9 +63,9 @@ export const SnakePlatform: React.FC<ISnakePlatform> = ({ pos, size, width, heig
         setCount(prevCount => (prevCount + deltaTime * 0.05) % 100)
     })
 
-    useEffect(() => {
-        snake.setDirection(swipeDirection)
-    }, [snake, swipeDirection])
+    // useEffect(() => {
+    //     snake.setDirection(swipeDirection)
+    // }, [snake, swipeDirection])
 
     useEffect(() => {
         snake.setHeadNextPos(snake.direction)
@@ -84,36 +85,22 @@ export const SnakePlatform: React.FC<ISnakePlatform> = ({ pos, size, width, heig
         }
     }, [count, food, snake])
 
-    const leftTouchPadAction = _ => {
-        snake.turnSnake('left')
+    const leftTouchPadAction = () => {
+        snake.turnAntiClockwise()
         setSnake(snake)
     }
 
-    const rightTouchPadAction = _ => {
-        snake.turnSnake('right')
+    const rightTouchPadAction = () => {
+        snake.turnClockwise()
         setSnake(snake)
     }
+
+    useClick(() => leftTouchPadAction(), () => rightTouchPadAction())
+
     
     return (
         <svg xmlns="http://www.w3.org/2000/svg" x={pos.x} y={pos.y} width={width} height={height} fill='#000'>
-            <rect x={0} 
-                  y={0} 
-                  width={width / 2} 
-                  height={height} 
-                  fill={BACKGROUND} 
-                  stroke={BACKGROUND}
-                  className={styles['touch-pad']} 
-                  onClick={leftTouchPadAction}
-            />
-            <rect x={width / 2} 
-                  y={0} 
-                  width={width / 2} 
-                  height={height} 
-                  fill={BACKGROUND} 
-                  stroke={BACKGROUND} 
-                  className={styles['touch-pad']}
-                  onClick={rightTouchPadAction} 
-            />
+            
             <SnakeComp snake={snake} type={type}/>
             <FoodComp food={food} type={type}/>
             
