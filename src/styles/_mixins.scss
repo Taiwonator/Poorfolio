@@ -1,5 +1,11 @@
 @import "./breakpoints";
 
+@mixin forSmallDesktop {
+    @media (min-width: $mq--desktop--small) { 
+        @content; 
+    }
+}
+
 @mixin forDesktop {
     @media (min-width: $mq--desktop) { 
         @content; 
@@ -18,4 +24,5 @@
     height: .2em;
     width: .2em;
     margin-left: .1em;
+    border: .025em solid $color-primary;
 }

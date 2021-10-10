@@ -7,7 +7,7 @@
 }
 
 .nav__inner {
-    padding: 1.5em ($gutter--mobile * 4);
+    padding: 0em ($gutter--mobile * 4);
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -83,7 +83,7 @@
     border-bottom: 10px solid $color-tertiary;
 
     &:hover {
-        background-color: $color-primary;
+        background-color: $color-background;
     }
     
     &::after {
@@ -114,20 +114,20 @@
         width: 25%;
         background-color: $color-secondary;
         transform-origin: left;
-        transition: all .3s ease-in-out;
+        transition: transform .3s ease-in-out, width .3s ease-in-out;
     }
 
     &__middle {
         width: 100%;
         background-color: $color-primary;
-        transition: all .4s ease-in-out;
+        transition: transform .4s ease-in-out, width .3s ease-in-out;
     }
 
     &__bottom {
         width: 55%;
         background-color: $color-tertiary;
         transform-origin: left;
-        transition: all .2s ease-in-out;
+        transition: transform .2s ease-in-out, width .3s ease-in-out;
     }
 
     &:focus,
@@ -175,6 +175,14 @@
     &:focus,
     &:hover > .nav__toggle__bottom  {
         transform: rotateZ(-40deg) translate(10px, -1px);
+    }
+}
+
+.phone-container {
+    transition: transform .2s ease-in-out;
+
+    &--hidden {
+        transform: translateY(-100%);
     }
 }
 

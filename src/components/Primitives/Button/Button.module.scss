@@ -3,6 +3,7 @@
     background-color: $color-secondary;
     font-weight: 900;
     padding: .25em .75em;
+    border: 4px solid black;
     transition: transform .1s cubic-bezier(0.075, 0.82, 0.165, 1);
 
     &:hover {

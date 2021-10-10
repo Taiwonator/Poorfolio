@@ -1,23 +1,37 @@
 import React from 'react'
-import PageWrapper from 'src/components/Wrappers/PageWrapper'
 import styles from './index.module.scss'
 import classNames from 'classnames'
+import Phone from '../Phone'
+import { useResponsiveWidth } from 'src/hooks/useResponsiveWidth'
 
 interface NavProps {
     navOpen: boolean,
+    phoneIsVisible: any,
     toggleAction: (event: React.MouseEvent<HTMLElement>) => void
 }
 
-const Nav: React.FC<NavProps> = ({ navOpen, toggleAction }) => {
+const Nav: React.FC<NavProps> = ({ navOpen, phoneIsVisible, toggleAction }) => {
+
     const navInnerClassName = classNames(
         styles['nav__inner'], 
         navOpen && styles['nav__inner--nav-open']
     )
 
+    const phoneContainerClassName = classNames(
+        styles['phone-container'], 
+        phoneIsVisible && styles['phone-container--hidden']
+    )
+
+    const device = useResponsiveWidth()
+    const PhoneComp = (device === 'mobile') ? '' : <Phone type='tiny' />
+
     return (
         <nav className={styles['nav']}>
             <div className={navInnerClassName}>
                 <h2 className={styles['nav__header']}>Home</h2>
+                <div className={phoneContainerClassName}>
+                    { PhoneComp }
+                </div>
                 <NavToggle navOpen={navOpen} action={toggleAction}/>
             </div>
             <NavItems navOpen={navOpen}/>
