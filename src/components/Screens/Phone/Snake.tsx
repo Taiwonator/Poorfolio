@@ -63,9 +63,9 @@ export const SnakePlatform: React.FC<ISnakePlatform> = ({ pos, size, width, heig
         setCount(prevCount => (prevCount + deltaTime * 0.05) % 100)
     })
 
-    useEffect(() => {
-        snake.setDirection(swipeDirection)
-    }, [snake, swipeDirection])
+    // useEffect(() => {
+    //     snake.setDirection(swipeDirection)
+    // }, [snake, swipeDirection])
 
     useEffect(() => {
         snake.setHeadNextPos(snake.direction)
@@ -100,24 +100,7 @@ export const SnakePlatform: React.FC<ISnakePlatform> = ({ pos, size, width, heig
     
     return (
         <svg xmlns="http://www.w3.org/2000/svg" x={pos.x} y={pos.y} width={width} height={height} fill='#000'>
-            <rect x={0} 
-                  y={0} 
-                  width={width / 2} 
-                  height={height} 
-                  fill={BACKGROUND} 
-                  stroke={BACKGROUND}
-                  className={styles['touch-pad']} 
-                  onClick={leftTouchPadAction}
-            />
-            <rect x={width / 2} 
-                  y={0} 
-                  width={width / 2} 
-                  height={height} 
-                  fill={BACKGROUND} 
-                  stroke={BACKGROUND} 
-                  className={styles['touch-pad']}
-                  onClick={rightTouchPadAction} 
-            />
+            
             <SnakeComp snake={snake} type={type}/>
             <FoodComp food={food} type={type}/>
             
