@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import Image from 'next/image'
 import styles from './index.module.scss'
 import { SETTINGS } from 'src/styles/settings'
@@ -7,8 +7,15 @@ import Arrow from '../../../assets/svg/arrow.svg'
 import LandingScreenHeader from './Header';
 import Button from 'src/components/Primitives/Button/Button';
 import Phone from '../Phone';
+import { useScroll } from 'src/hooks/useScroll';
+import { useResponsiveWidth } from 'src/hooks/useResponsiveWidth';
 
-const LandingScreen: React.FC = () => { 
+const LandingScreen = (props, ref) => { 
+
+    const scrollY = useScroll()
+    const device = useResponsiveWidth()
+    const PhoneComp = (device === 'mobile') ? '' : <Phone ref={ref} type='normal'/>
+
     return (
             <FlexWrapper name='landing-screen' tag='section' minHeight='100vh'>
                 <div className={styles['landing-screen']}>
@@ -16,8 +23,8 @@ const LandingScreen: React.FC = () => {
                         <LandingScreenHeader />
                         <Button text='shout me 🎉' />
                     </div>
-                    <div className={styles['landing-screen__right']}>
-                        <Phone />
+                    <div className={styles['landing-screen__right']} style={{ transform: `translateY(-${scrollY}px)` }}>
+                        { PhoneComp }
                     </div>
                 </div>
             </FlexWrapper>
@@ -30,4 +37,4 @@ const LandingScreen: React.FC = () => {
 - PageGutter
 */
 
-export default LandingScreen
+export default forwardRef<any>(LandingScreen)

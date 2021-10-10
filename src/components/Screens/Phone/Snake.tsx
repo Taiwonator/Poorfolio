@@ -4,9 +4,11 @@ import useKeypress from 'src/hooks/useKeypress'
 import useAnimationFrame from 'src/hooks/useAnimationFrame'
 import { Food, Snake, ISnake, ISnakePlatform, IBlock, ISnakeBlock, IPos } from './lib/snake'
 
-export const SnakePlatform: React.FC<ISnakePlatform> = ({ pos, width, height, swipeDirection }) => {
+import styles from './Snake.module.scss'
+
+export const SnakePlatform: React.FC<ISnakePlatform> = ({ pos, size, width, height, swipeDirection, type }) => {
     
-    let size = 1 / 10
+    let BACKGROUND = SETTINGS.background
     let SECONDARY = SETTINGS.secondary
     let TERTIARY = SETTINGS.tertiary
 
@@ -14,9 +16,11 @@ export const SnakePlatform: React.FC<ISnakePlatform> = ({ pos, width, height, sw
 
     const [food, setFood] = useState(new Food({
         color: SECONDARY, 
+        stroke: 'black',
         pos: { x: 0, y: 0 }, 
-        width: width * size,
-        height: width * size, 
+        platformWidth: width, 
+        platformHeight: height,
+        size
     }))
 
     const[snake, setSnake] = useState(new Snake({
@@ -24,7 +28,7 @@ export const SnakePlatform: React.FC<ISnakePlatform> = ({ pos, width, height, sw
         length: 6, 
         platformWidth: width, 
         platformHeight: height, 
-        size: (1 / 10)
+        size
     }))
     
     const [count, setCount] = useState(0)
@@ -59,71 +63,143 @@ export const SnakePlatform: React.FC<ISnakePlatform> = ({ pos, width, height, sw
     })
 
     useEffect(() => {
-        if(isSwipe) {
-            snake.setHeadNextPos(swipeDirection)
-        } else {
-            snake.setHeadNextPos(snake.direction)
-        }
+        snake.setDirection(swipeDirection)
+    }, [snake, swipeDirection])
+
+    useEffect(() => {
+        snake.setHeadNextPos(snake.direction)
         if(count > 5) {
             // Move the snake
             snake.moveSnake()
             setSnake(snake)
 
+            if(snake.isHit(food)) {
+                food.reposition()
+                snake.growSnake()
+                setFood(food)
+                setSnake(snake)
+            }
+            
             setCount(0)
         }
-    }, [count, snake, isSwipe, swipeDirection])
+    }, [count, food, snake])
+
+    const leftTouchPadAction = _ => {
+        snake.turnSnake('left')
+        setSnake(snake)
+    }
+
+    const rightTouchPadAction = _ => {
+        snake.turnSnake('right')
+        setSnake(snake)
+    }
     
     return (
         <svg xmlns="http://www.w3.org/2000/svg" x={pos.x} y={pos.y} width={width} height={height} fill='#000'>
-            <SnakeComp snake={snake} />
-            {/* <FoodComp food={food} /> */}
+            <rect x={0} 
+                  y={0} 
+                  width={width / 2} 
+                  height={height} 
+                  fill={BACKGROUND} 
+                  stroke={BACKGROUND}
+                  className={styles['touch-pad']} 
+                  onClick={leftTouchPadAction}
+            />
+            <rect x={width / 2} 
+                  y={0} 
+                  width={width / 2} 
+                  height={height} 
+                  fill={BACKGROUND} 
+                  stroke={BACKGROUND} 
+                  className={styles['touch-pad']}
+                  onClick={rightTouchPadAction} 
+            />
+            <SnakeComp snake={snake} type={type}/>
+            <FoodComp food={food} type={type}/>
+            
         </svg>
     )
 }
 
 interface SnakeProps {
-    snake: ISnake
+    snake: ISnake,
+    type: 'tiny' | 'normal' | 'fullscreen'
 }
 
-const SnakeComp: React.FC<SnakeProps> = ({ snake }) => {
-    let snakeBlocks = snake.body.map((block, i) => {
-    
-    return (
+const SnakeComp: React.FC<SnakeProps> = ({ snake, type }) => {
+    let snakeBlocks = snake.body.map((block, i) => (
+            <SnakeBlock key={i}
+                        nextPos={block.nextPos}
+                        pos={block.pos} 
+                        width={snake.size}
+                        height={snake.size}
+                        color={block.color}
+                        stroke={'black'}
+            />
+        )
+    )
+
+    let snakeBlocksShadow = snake.body.map((block, i) => (
         <SnakeBlock key={i}
                     nextPos={block.nextPos}
-                    pos={block.pos} 
+                    pos={{
+                        x: (type === 'tiny') ? block.pos.x + 10 : block.pos.x,
+                        y: block.pos.y + 10
+                    }} 
                     width={snake.size}
                     height={snake.size}
-                    color={block.color}
+                    color={'white'}
+                    stroke={'black'}
         />
     )
-})
+)
     
     return (
         <g> 
+            {snakeBlocksShadow}
             {snakeBlocks}
         </g>
     )
 }
 
-const SnakeBlock: React.FC<ISnakeBlock> = ({ pos, width, height, color }) => {
+const SnakeBlock: React.FC<ISnakeBlock> = ({ pos, width, height, color, stroke }) => {
     return (
-        <rect x={pos.x} y={pos.y} width={width} height={height} fill={color} stroke={color} style={{ transition: 'all .1s linear' }}></rect>
+        <rect x={pos.x} 
+              y={pos.y} 
+              width={width} 
+              height={height} 
+              fill={color} 
+              stroke={stroke} 
+              style={{ transition: 'all .1s linear' }}
+              strokeWidth={2}
+        />
     )
 }
 
 interface FoodProps {
-    food: IBlock
+    food: IBlock, 
+    type: 'tiny' | 'normal' | 'fullscreen'
 }
 
-const FoodComp: React.FC<FoodProps> = ({ food }) => {
+const FoodComp: React.FC<FoodProps> = ({ food, type }) => {
     return (
-        <rect x={food.pos.x} 
-              y={food.pos.y} 
-              width={food.width} 
-              height={food.height} 
-              fill={food.color} 
-              stroke={food.color} 
-        />
+        <>
+            <rect x={(type === 'tiny') ? food.pos.x + 10 : food.pos.x} 
+                y={food.pos.y + 10} 
+                width={food.width} 
+                height={food.height} 
+                fill={'white'} 
+                stroke={'black'} 
+                strokeWidth={2}
+            />
+            <rect x={food.pos.x} 
+                y={food.pos.y} 
+                width={food.width} 
+                height={food.height} 
+                fill={food.color} 
+                stroke={'black'} 
+                strokeWidth={2}
+            />
+        </>
     )
 }

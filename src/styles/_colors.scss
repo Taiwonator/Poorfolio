@@ -10,7 +10,7 @@ $color-tertiary--light: $color-purple;
 
 $color-background--dark: $color-black;
 $color-primary--dark: $color-white;
-$color-secondary--dark: $color-yellow;
+$color-secondary--dark: $color-yellow; 
 $color-tertiary--dark: $color-purple;
 
 $color-background: $color-background--light;
@@ -19,18 +19,18 @@ $color-secondary: $color-secondary--light;
 $color-tertiary: $color-tertiary--light;
 
 :export {
-  background: $color-background--dark;
-  primary: $color-primary--dark;
-  secondary: $color-secondary--dark;
-  tertiary: $color-tertiary--dark;
+  background: $color-background;
+  primary: $color-primary;
+  secondary: $color-secondary;
+  tertiary: $color-tertiary;
 
   background--light: $color-white;
   primary--light: $color-black;
   secondary--light: $color-purple;
   tertiary--light: $color-yellow;
 
-  background--dark: $color-white;
-  primary--dark: $color-black;
+  background--dark: $color-black;
+  primary--dark: $color-white;
   secondary--dark: $color-yellow;
   tertiary--dark: $color-purple;
 }
