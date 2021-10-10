@@ -71,7 +71,7 @@ export const SnakePlatform: React.FC<ISnakePlatform> = ({ pos, width, height, sw
 
             setCount(0)
         }
-    }, [count, snake])
+    }, [count, snake, isSwipe, swipeDirection])
     
     return (
         <svg xmlns="http://www.w3.org/2000/svg" x={pos.x} y={pos.y} width={width} height={height} fill='#000'>
