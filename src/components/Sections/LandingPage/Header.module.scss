@@ -35,7 +35,6 @@
   font-size: 6em;
 
   @include forTablet() {
-    background-color: $color-background;
     z-index: 1;
     font-size: 8em;
   }

@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './Header.module.scss';
 
-const LandingScreenHeader: React.FC = () => {
+const LandingPageHeader: React.FC = () => {
 
     return (
         <div className={styles['header']}>
@@ -12,4 +12,4 @@ const LandingScreenHeader: React.FC = () => {
     )
 }
 
-export default LandingScreenHeader
+export default LandingPageHeader
