@@ -1,14 +1,15 @@
 import React, { useEffect, useState, useRef } from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Nav from 'src/components/Screens/Nav'
+import Nav from 'src/components/Sections/Nav'
 import PageWrapper from 'src/components/Wrappers/PageWrapper'
-import LandingScreen from '../src/components/Screens/LandingScreen'
-import ComingSoonScreen from 'src/components/Screens/ComingSoonScreen'
+import LandingScreen from '../src/components/Sections/LandingPage'
+import ComingSoonScreen from 'src/components/Sections/ComingSoonScreen'
 import { useScreenElement } from 'src/hooks/useScreenElement'
 import { useResponsiveWidth } from 'src/hooks/useResponsiveWidth'
-import Phone from 'src/components/Screens/Phone'
+import Phone from 'src/components/Sections/Phone'
 import FlexWrapper from 'src/components/Wrappers/FlexWrapper'
+import CYPScreen from 'src/components/Sections/CYPScreen'
 
 const Home: NextPage = () => {
 
@@ -34,14 +35,15 @@ const Home: NextPage = () => {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
 
+      { PhoneComp }
+
       <Nav navOpen={navOpen} toggleAction={toggleNavAction} phoneIsVisible={isVisible}/>
 
       <PageWrapper navOpen={navOpen}>
         <LandingScreen ref={ref}/>
+        <CYPScreen />
         <ComingSoonScreen />
       </PageWrapper>
-
-      { PhoneComp }
 
     </React.Fragment>
   )
