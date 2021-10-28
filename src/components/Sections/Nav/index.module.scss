@@ -43,6 +43,7 @@
 
 .nav__item-list {
     position: absolute;
+    left: 100vw;
     background-color: $color-secondary;
     width: 100vw;
     min-height: 100vh;
@@ -68,6 +69,7 @@
 
     &--active {
       opacity: 1;
+      left: 0;
 
         @include forTablet {
             margin-right: 0;
