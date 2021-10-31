@@ -1,26 +1,44 @@
 import React from 'react'
 import { useResponsiveWidth } from 'src/hooks/useResponsiveWidth'
 import styles from './Tablet.module.scss'
+import { SETTINGS } from 'src/styles/settings'
+import Image from 'next/image'
+import TypingText from './TypingText'
 
 const Tablet: React.FC = props => {
     const device = useResponsiveWidth()
     const isMobile = (device === 'mobile') 
 
+    const apps = 
+    [
+        {
+            name: 'Designs', 
+            color: SETTINGS.tertiary, 
+            child: <img src="/star.png" alt="me" /> 
+        }, 
+        {
+            name: 'Me', 
+            color: SETTINGS.primary, 
+            child: <img src="/me.png" alt="me" /> 
+        }, 
+        {
+            name: 'Projects', 
+            color: SETTINGS.secondary, 
+            child: <TypingText />
+        }
+    ]
+
     return (
         <div className={styles['tablet-wrapper']}>
             <div className={styles['tablet__content']}>
-                <div className={styles['tablet__content__app']}>
-                    <div className={styles['tablet__content__app__button']}></div>
-                    <h3 className={styles['tablet__content__app__name']}>Designs</h3>
-                </div>
-                <div className={styles['tablet__content__app']}>
-                    <div className={styles['tablet__content__app__button']}></div>
-                    <h3 className={styles['tablet__content__app__name']}>Me</h3>
-                </div>
-                <div className={styles['tablet__content__app']}>
-                    <div className={styles['tablet__content__app__button']}></div>
-                    <h3 className={styles['tablet__content__app__name']}>Projects</h3>
-                </div>
+                {apps.map((app, i) => (
+                    <div key={app.name} className={styles['tablet__content__app']}>
+                        <div className={styles['tablet__content__app__button']} style={{ backgroundColor: app.color }}>
+                            {app.child}
+                        </div>
+                        <h3 className={styles['tablet__content__app__name']}>{app.name}</h3>
+                    </div>
+                ))}
             </div>
             { !isMobile && <TabletSVG /> }
         </div>

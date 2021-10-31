@@ -33,8 +33,11 @@
             &__button {
                 height: 75px;
                 width: 75px;
-                background-color: $color-secondary;
                 border-radius: 10px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: relative;
 
                 @include forDesktop {
                     height: 150px;
@@ -48,6 +51,10 @@
 
                 &:active {
                     filter: brightness(.8);
+                }
+
+                & > * {
+                    max-width: 90%;
                 }
             }
 
