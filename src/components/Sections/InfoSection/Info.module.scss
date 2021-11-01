@@ -1,0 +1,52 @@
+.info {
+    &-container {
+        width: 90%;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    &__hero {
+        margin-top: .5em;
+        font-size: 4em;
+        padding: .5em 0;
+        width: 105%;
+
+        &::after {
+            @include dot;
+            background: $color-background;
+        }
+
+        @include forTablet {
+            font-size: 6em;
+        }
+
+        @include forDesktop {
+            width: 115%;
+        }
+    }
+
+    &__row {
+        min-height: 300px;
+        width: 105%;
+        padding: 2em;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+
+        @include forDesktop {
+            width: 115%;
+        }
+    }
+
+    &__frame {
+        width: 100%;
+        height: 100%;
+        border: 5px $color-primary solid;
+        position: absolute;
+        top: 0;
+        left: 0;
+        pointer-events: none
+    }
+}

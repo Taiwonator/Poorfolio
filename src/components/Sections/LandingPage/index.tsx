@@ -14,13 +14,13 @@ const LandingPage = (props, ref) => {
     const PhoneComp = (device === 'mobile') ? '' : <Phone ref={ref} type='normal'/>
 
     return (
-            <FlexWrapper name='landing-screen' tag='section' minHeight='100vh'>
-                <div className={styles['landing-screen']}>
-                    <div className={styles['landing-screen__left']}>
+            <FlexWrapper name='landing-page' tag='section' minHeight='100vh'>
+                <div className={styles['landing-page']}>
+                    <div className={styles['landing-page__left']}>
                         <LandingPageHeader />
                         <Button text='shout me 🎉' />
                     </div>
-                    <div className={styles['landing-screen__right']} style={{ transform: `translateY(-${scrollY}px)` }}>
+                    <div className={styles['landing-page__right']} style={{ transform: `translateY(-${scrollY}px)` }}>
                         { PhoneComp }
                     </div>
                 </div>

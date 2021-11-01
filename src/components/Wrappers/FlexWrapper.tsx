@@ -6,18 +6,18 @@ interface FlexWrapperProps {
     children: React.ReactNode, 
     name: string, 
     tag?: keyof JSX.IntrinsicElements, 
-    screen?: boolean,
+    section?: boolean,
     center?: boolean,
     bottom?: boolean,
     minHeight?: string
 }
 
 const FlexWrapper: React.FC<FlexWrapperProps> = props => {
-    const { children, name, tag, screen, center, bottom, minHeight } = props
+    const { children, name, tag, section, center, bottom, minHeight } = props
 
     let Tag = tag ? tag : 'div'
     let otherClassNames = classNames(
-        screen && styles['flex-wrapper--screen'],
+        section && styles['flex-wrapper--section'],
         center && styles['flex-wrapper--center'],
         bottom && styles['flex-wrapper--bottom']
     )

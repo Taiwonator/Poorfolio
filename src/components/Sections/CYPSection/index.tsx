@@ -5,7 +5,7 @@ import AbsoluteWrapper from 'src/components/Wrappers/AbsoluteWrapper'
 import FlexWrapper from 'src/components/Wrappers/FlexWrapper'
 import Tablet from './Tablet'
 
-const CYPScreen = () => {
+const CYPSection: React.FC = () => {
     return (
         <FlexWrapper name='choose-your-path' minHeight='100vh' center>
             <Header tag='h1' text='choose your path' />
@@ -14,4 +14,4 @@ const CYPScreen = () => {
     )
 }
 
-export default CYPScreen
+export default CYPSection

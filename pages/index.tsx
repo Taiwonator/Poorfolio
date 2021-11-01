@@ -3,13 +3,13 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Nav from 'src/components/Sections/Nav'
 import PageWrapper from 'src/components/Wrappers/PageWrapper'
-import LandingScreen from '../src/components/Sections/LandingPage'
-import ComingSoonScreen from 'src/components/Sections/ComingSoonScreen'
+import LandingPage from '../src/components/Sections/LandingPage'
+import ComingSoonSection from 'src/components/Sections/ComingSoonSection'
 import { useScreenElement } from 'src/hooks/useScreenElement'
 import { useResponsiveWidth } from 'src/hooks/useResponsiveWidth'
 import Phone from 'src/components/Sections/Phone'
-import FlexWrapper from 'src/components/Wrappers/FlexWrapper'
-import CYPScreen from 'src/components/Sections/CYPScreen'
+import CYPSection from 'src/components/Sections/CYPSection'
+import InfoSection from 'src/components/Sections/InfoSection'
 
 const Home: NextPage = () => {
 
@@ -40,9 +40,10 @@ const Home: NextPage = () => {
       <Nav navOpen={navOpen} toggleAction={toggleNavAction} phoneIsVisible={isVisible}/>
 
       <PageWrapper navOpen={navOpen}>
-        <LandingScreen ref={ref}/>
-        <CYPScreen />
-        <ComingSoonScreen />
+        <LandingPage ref={ref}/>
+        <CYPSection />
+        <InfoSection />
+        <ComingSoonSection />
       </PageWrapper>
 
     </React.Fragment>
