@@ -11,4 +11,9 @@
     &--small {
         font-size: 3em;
     }
+
+    &--dot::after {
+        @include dot;
+        background-color: $color-background
+    }
 }

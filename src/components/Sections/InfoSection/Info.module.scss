@@ -9,35 +9,32 @@
 
     &__hero {
         margin-top: .5em;
-        font-size: 4em;
-        padding: .5em 0;
+        font-size: 1.15em;
+        padding: 1em 0;
         width: 105%;
 
-        &::after {
-            @include dot;
-            background: $color-background;
-        }
-
         @include forTablet {
-            font-size: 6em;
+            font-size: 1.5em;
         }
 
         @include forDesktop {
-            width: 115%;
+            width: 105%;
+            font-size: 2em;
+            padding: 2em 0;
+        }
+
+        &__subheader {
+            font-weight: 700;
         }
     }
 
     &__row {
-        min-height: 300px;
+        min-height: 200px;
         width: 105%;
-        padding: 2em;
+        padding: 1em 2.5%;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-
-        @include forDesktop {
-            width: 115%;
-        }
     }
 
     &__frame {
