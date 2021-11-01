@@ -17,37 +17,37 @@ const Container: React.FC<ContainerProps>  = ({ children }) => {
 interface HeroProps {
     backgroundColor: string, 
     color: string,
+    subheaderColor: string,
     text: string
 }
 
-const Hero: React.FC<HeroProps> = ({ backgroundColor, color, text }) => {
+const Hero: React.FC<HeroProps> = ({ backgroundColor, color, subheaderColor, text }) => {
     const style = {
-        color, 
-        backgroundColor
+        backgroundColor, 
+        color: subheaderColor
     }
 
     return (
-        <h2 className={styles['info__hero']} style={style}>
-            { text }
-        </h2>
-        
+        <div className={styles['info__hero']} style={style}>
+            <Header tag='h2' text={text} color={color} dot/>
+            <p className={styles['info__hero__subheader']}>Lets go on a journey</p>
+        </div>
     )
 }
 
-interface RowProps extends HeroProps {
+interface RowProps {
     children: React.ReactNode, 
-    headerColor: string
+    backgroundColor: string, 
+    text: string
 }
 
-const Row: React.FC<RowProps> = ({ backgroundColor, children, color, headerColor, text }) => {
+const Row: React.FC<RowProps> = ({ backgroundColor, children, text }) => {
     const style = {
         backgroundColor,
-        color
     }
     
     return (
         <div className={styles['info__row']} style={style}>
-            <Header tag='h3' text={text} color={headerColor} />
             { children }
         </div>
     )
