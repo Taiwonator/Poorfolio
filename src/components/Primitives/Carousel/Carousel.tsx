@@ -36,10 +36,12 @@ const Item = ({ url, openModal }) => {
         openModal(urlMap[url])
     }
 
+    const className = classNames(styles['carousel__item'])
+
     return (
         <img
             onMouseUp={() => onMouseUp()}
-            className={styles['carousel__item']}
+            className={className}
             src={url} alt="website screenshot"
         />
     )

@@ -41,8 +41,8 @@ const Home: NextPage = () => {
 
       <PageWrapper navOpen={navOpen}>
         <LandingPage ref={ref}/>
-        <CYPSection />
-        <InfoSection />
+        {/* <CYPSection /> */}
+        {/* <InfoSection /> */}
         <ComingSoonSection />
       </PageWrapper>
 
